@@ -1,0 +1,61 @@
+//fiquem els noms als LEDs
+int verd1=6;
+int groc1=7;
+int vermell1=8;
+int verd2=9;
+int groc2=10;
+int vermell2=11;
+
+//fiquem noms als bottons
+int boto1=3;
+int boto2=4;
+
+//Creem la variable que ens dira quin semafor esta enjegat
+int semafor=1;
+
+void setup() {
+ 
+//Configurem tot
+pinMode(verd1,OUTPUT);
+pinMode(groc1,OUTPUT);
+pinMode(vermell1,OUTPUT);
+pinMode(verd2,OUTPUT);
+pinMode(groc2,OUTPUT);
+pinMode(vermell2,OUTPUT);
+pinMode(boto1,INPUT);
+pinMode(boto2,INPUT);
+
+//Fem com si estigues el primer semafor engegat
+digitalWrite(verd1,HIGH);
+digitalWrite(vermell2,HIGH);
+}
+
+
+void loop() {
+  if (semafor=1){
+    int a=digitalRead(boto2);
+    if(a==HIGH){
+      digitalWrite(groc1,HIGH);
+      digitalWrite(verd1,LOW);
+      delay(3000);
+      digitalWrite(groc1,LOW);
+      digitalWrite(vermell1,HIGH);
+      digitalWrite(verd2,HIGH);
+      digitalWrite(vermell2,LOW);
+      semafor=2;
+    }
+  }
+    if (semafor=2){
+    int b=digitalRead(boto1);
+    if(b==HIGH){
+      digitalWrite(groc2,HIGH);
+      digitalWrite(verd2,LOW);
+      delay(3000);
+      digitalWrite(groc2,LOW);
+      digitalWrite(vermell2,HIGH);
+      digitalWrite(verd1,HIGH);
+      digitalWrite(vermell1,LOW);
+      semafor=1;
+      }
+   }
+}
